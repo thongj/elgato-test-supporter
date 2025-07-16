@@ -13,7 +13,8 @@ apps = {
     'ControlCenter':'Elgato Control Center', 
     '4KCaptureUtility':'Elgato 4K Capture Utility',
     'StreamDeck':'Elgato Stream Deck',
-    'Elgato.Studio':'Elgato.Studio_g54w8ztgkx496'
+    'Elgato.Studio':'Elgato.Studio_g54w8ztgkx496',
+    'Elgato.WaveCast':'Elgato.WaveCast_g54w8ztgkx496'
     } 
 
 master = Tk()
@@ -136,7 +137,9 @@ def web_dowload():
 
 def create_app_buttons(root, app_name, i):
     if '.' in app_name:
-        app_data_path = f"C:\\Users\\{os.getlogin()}\\AppData\\Local\\Packages\\{apps[app_name]}"
+        appdata = os.getenv('APPDATA')
+        appdata_base = os.path.dirname(appdata)
+        app_data_path = f"{appdata_base}\\Local\\Packages\\{apps[app_name]}"
     else:
         app_data_path = get_appdata_path(app_name)
 
